@@ -1,15 +1,14 @@
 const mongoose = require("mongoose");
 
+const connectionString = process.env.MONGO_URI || "mongodb://localhost:27017/todo";
 
 const conn = async (req, res) => {
   try {
-    await mongoose
+    const conn = await mongoose
       .connect(
-        process.env.MONGO_URI
-      )
-      .then(() => {
-        console.log("Databse Connected");
-      });
+        connectionString
+      );
+    console.log(`MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
     console.log(error);
   }

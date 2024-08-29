@@ -11,7 +11,7 @@ app.use(express.json());
 app.use(cors());
 conn();
 
-const Port = process.env.PORT || 8080;
+const Port = 5748;
 
 app.use("/api/v1", auth);
 app.use("/api/v2", list);
